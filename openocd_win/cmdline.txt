@@ -1,0 +1,12 @@
+
+# for binary file mram.bin
+.\openocd.exe -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "openocd_tools/tcl/olimex-arm-usb-ocd-h.cfg" -f "openocd_tools/tcl/gap9revb.tcl" -f "openocd_tools/tcl/flash_image.tcl" -c "gap9_flash_raw mram.bin 73424 openocd_tools/gap_bins/gap_flasher-gap9_evk-mram.elf 0x8000; exit;"
+.\openocd.exe -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "openocd_tools/tcl/gapuino_ftdi.cfg" -f "openocd_tools/tcl/gap9revb.tcl" -f "openocd_tools/tcl/flash_image.tcl" -c "gap9_flash_raw mram.bin 73424 openocd_tools/gap_bins/gap_flasher-gap9_evk-mram.elf 0x8000; exit;"
+
+# for elf file 
+.\openocd.exe -d0 -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "openocd_tools/tcl/gapuino_ftdi.cfg" -f "openocd_tools/tcl/gap9revb.tcl" -c "load_and_start_binary blink_led.elf 0x1c010160; exit;"
+.\openocd.exe -d0 -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "openocd_tools/tcl/gapuino_ftdi.cfg" -f "openocd_tools/tcl/gap9revb.tcl" -c "load_and_start_binary helloworld.elf 0x1c010160; exit;"
+.\openocd.exe -d0 -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "openocd_tools/tcl/olimex-arm-usb-ocd-h.cfg" -f "openocd_tools/tcl/gap9revb.tcl" -c "load_and_start_binary gap_fuser.elf 0x1c010160; exit;"
+
+# for gd-qspiflash
+.\openocd.exe -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "openocd_tools/tcl/olimex-arm-usb-ocd-h.cfg" -f "openocd_tools/tcl/gap9revb.tcl" -f "openocd_tools/tcl/flash_image.tcl" -c "gap9_flash_raw mram.bin 73424 openocd_tools/gap_bins/gap_flasher-gap9-gd25lq-spi.elf 0x8000; exit;"

@@ -1,0 +1,21 @@
+name: gap_flasher
+builder: cmake
+platforms:
+    - board
+boards:
+    - gap9evk
+boards:
+    - gap9evk
+os:
+    - freertos
+chips:
+    - gap9
+variants:
+    std:
+        name: standard
+        tags:
+            - integration
+            - release
+        duration: standard
+        flags: ~
+        compile_only: true
