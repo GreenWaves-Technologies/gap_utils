@@ -28,4 +28,5 @@ The riscv32 gcc toolchain can be found [here](https://github.com/GreenWaves-Tech
 
 ## Limitations
 
-For the moment only Ubuntu 22.04 is supported. We plan to support also windows 11. 
+For the moment only Ubuntu 22.04 is supported. Next releases will also support windows 11. 
+
