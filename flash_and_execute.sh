@@ -25,8 +25,6 @@ fi
 FILESIZE=$(stat -c%s "$BINARY")
 echo "Size of $BINARY = $FILESIZE bytes."
 
-#./openocd_ubuntu2204/bin/openocd -d2 -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "$path/openocd_tools/tcl/gapuino_ftdi.cfg" -f "$path/openocd_tools/tcl/gap9revb.tcl" -c "load_and_start_binary /home/yao/projects/sdk/gap_sdk/examples/gap9/basic/helloworld/build/helloworld 0x1c010160"
-
 ./openocd_ubuntu2204/bin/openocd -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "$path/openocd_tools/tcl/gapuino_ftdi.cfg" -f "$path/openocd_tools/tcl/gap9revb.tcl" -f "$path/openocd_tools/tcl/flash_image.tcl" -c "gap9_flash_raw ${BINARY:P} $FILESIZE $path/openocd_tools/gap_bins/gap_flasher-gap9_evk-mram.elf 0x2000; exit;"
 
 
@@ -38,5 +36,6 @@ if [ -z "$EXEC_ADDRESS" ]
     exit 0
 fi
 
+## Should the first argument be -d0 or -d2? 
 
 ./openocd_ubuntu2204/bin/openocd -d0 -c "gdb_port disabled; telnet_port disabled; tcl_port disabled" -f "$path/openocd_tools/tcl/gapuino_ftdi.cfg" -f "$path/openocd_tools/tcl/gap9revb.tcl" -c "load_and_start_binary  ${BINARY:P} $EXEC_ADDRESS"
