@@ -25,3 +25,7 @@ To find the correct start address, you can use the RISC-V GCC toolchain with the
 
 The riscv32 gcc toolchain can be found [here](https://github.com/GreenWaves-Technologies/gap_gnu_toolchain)
 
+
+## Limitations
+
+For the moment only Ubuntu 22.04 is supported. We plan to support also windows 11. 
