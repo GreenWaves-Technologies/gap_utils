@@ -72,5 +72,6 @@ The riscv32 gcc toolchain can be found [here](https://github.com/GreenWaves-Tech
 
 ## Known Limitations
 
-- Only Ubuntu 22.04 is supported. Next releases will also support windows 11. 
+- Only Ubuntu is supported (Tested on 22.04). Next releases will also support windows 11. 
 - This tool can only flash one image per flash type, next releases will be able to handle multiple images per flash with different flash addresses.
+- Only digilent like ftdi is supported.
