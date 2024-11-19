@@ -47,10 +47,10 @@ In case of multiple flash usage and need to debug printf on jtag this example sh
 ./flash_and_execute.sh --mram_img test_elf/mobilenet_mram.bin_0 --flash_img test_elf/mobilenet_flash.bin_0  --exec test_elf/mobilenet --addr 0x1c0101e0
 ```
 
-In this example NN paramters are copied into MRAM and OCTOSPI flash along with all other images partitions. Which are then used from the ELF to execute the application. 
-Along with the elf provided with the argument --exec you need to also provide the address of the _start function. To find this address there is command provided in the following section. The execution will load an image from JTAG and execute Mobilenet showing the detected class and the per layer performances. 
+In this example, the NN paramters are copied into MRAM and OCTOSPI flash along with all other images partitions. These are then used from the ELF file to execute the application. 
+Along with the ELF provided using the --exec argument, you also need to also specify the address of the `_start` function (Instructions for finding this address are provided in the following section). The execution process will load an image from JTAG and run Mobilenet, displaying the detected class and per-layer performance metrics.
 
-This application cannot run from mram since the printf included will avoid the application to run. They must be redirected to UART or None to be used. 
+This application cannot run from MRAM since the printf included will avoid the application to run. They must be redirected to UART or None to be used. 
 
 ## Usage 
 
@@ -63,9 +63,9 @@ Usage: ./flash_and_execute [ -m | --mram_img mram_img_file ]
 
 - `-m|--mram_img mram_img_file`: is the relative or absolute path to the EMRAM image to be flashed onto GAP9.
 
-- ` -f|--flash_img flash_img_file`: is the relative or absolute path to the OCTOSPI image to be flashed.
+- `-f|--flash_img flash_img_file`: is the relative or absolute path to the OCTOSPI image to be flashed.
 
-- ` -e|--exec elf_file -a|--addr 0x1c0XXXXX ` elf_file is the path of the elf to executed through JTAG and 0x1c0XXXXX is the hexadecimal address of the function _start (the entry point of the executable). Both arguments must be provided to execute the ELF through JTAG. To found the correct address you can use riscv32 gcc tolchain with the following command: `riscv32-unknown-elf-objdump multi_spi --source | grep \<_start\>"`
+- `-e|--exec elf_file -a|--addr 0x1c0XXXXX ` elf_file is the path of the elf to executed through JTAG and 0x1c0XXXXX is the hexadecimal address of the function _start (the entry point of the executable). Both arguments must be provided to execute the ELF through JTAG. To found the correct address you can use riscv32 gcc tolchain with the following command: `riscv32-unknown-elf-objdump multi_spi --source | grep \<_start\>"`
 
 The riscv32 gcc toolchain can be found [here](https://github.com/GreenWaves-Technologies/gap_gnu_toolchain)
 
